@@ -35,7 +35,23 @@ async function getCameras() {
   }
 }
 
-async function getMedia(deviceId) {
+async function getScreens() {
+  const screen = await navigator.mediaDevices.getUserMedia({
+    video: { mediaSource: "screen" },
+  });
+
+  console.log(screen);
+
+  const screenId = screen.id;
+  const option = document.createElement("option");
+  option.value = screenId;
+  option.id = "screen";
+  option.innerText = "Screen Share";
+
+  camerasSelect.appendChild(option);
+}
+
+async function getMedia(deviceId, id) {
   const initialConstrains = {
     audio: true,
     video: { facingMode: "user" },
@@ -48,12 +64,22 @@ async function getMedia(deviceId) {
 
   try {
     myStream = await navigator.mediaDevices.getUserMedia(
-      deviceId ? cameraConstraints : initialConstrains
+      deviceId && id === "camera" ? cameraConstraints : initialConstrains
     );
+
+    if (id === "screen") {
+      myStream = await navigator.mediaDevices.getDisplayMedia({
+        cursur: true,
+        audio: true,
+        video: true,
+      });
+    }
+
     myFace.srcObject = myStream;
 
     if (!deviceId) {
       await getCameras();
+      await getScreens();
     }
   } catch (e) {
     console.log(e);
@@ -90,12 +116,17 @@ function handleCameraClick() {
 
 async function handleCameraChange() {
   // 카메라를 변경하면 새로운 디바이스로 업데이트 된 video track을 받는다.
-  await getMedia(camerasSelect.value);
+  const id = camerasSelect.options[camerasSelect.selectedIndex].id;
+  await getMedia(camerasSelect.value, id);
 
   if (myPeerConnection) {
     const videoTrack = myStream.getVideoTracks()[0];
 
     // Sender :  media stream track을 컨트롤 하게 해주는 역할
+    myPeerConnection
+      .getSenders()
+      .forEach((sender) => console.log(sender.track));
+
     const videoSender = myPeerConnection
       .getSenders()
       .find((sender) => sender.tack.kind === "video");
