@@ -1,0 +1,138 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Noto+Sans+KR&display=swap");
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: normal;
+  flex-direction: column;
+  height: 100vh;
+  box-sizing: border-box;
+  background-color: #f6f8fa;
+}
+body::before {
+  content: "@console.ryog";
+  position: absolute;
+  right: 50px;
+  bottom: 50px;
+  font-size: 14px;
+  color: #d3d3d3;
+}
+
+button {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  color: #0969da;
+  cursor: pointer;
+}
+
+input {
+  padding: 10px;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+input:focus {
+  outline: none;
+}
+
+header h1 {
+  font-size: 64px;
+  font-weight: 700;
+  margin: 200px 0 110px;
+}
+
+#welcome {
+  text-align: center;
+}
+#welcome span {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 40px;
+  animation: move 1.5s alternate infinite;
+}
+#welcome div#input-wrap {
+  position: relative;
+}
+#welcome div#input-wrap form input {
+  width: 300px;
+  height: 50px;
+  border: 1.5px solid #d3d3d3;
+  border-radius: 10px;
+}
+#welcome div#input-wrap form button {
+  position: absolute;
+  padding: 10px;
+  right: 0;
+}
+#welcome div#input-wrap form button i {
+  font-size: 30px;
+}
+
+#call {
+  padding: 0 85px;
+}
+#call #subject button {
+  font-size: 50px;
+  margin: 50px 0;
+}
+#call #subject button i {
+  font-size: 50px;
+}
+#call #subject #subject-title {
+  padding: 0 10px;
+  margin-bottom: 50px;
+  font-size: 40px;
+  font-weight: 700;
+}
+#call #video-wrap {
+  margin-bottom: 80px;
+}
+#call #stream-tools {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+#call #stream-tools select {
+  width: 360px;
+  height: 50px;
+  margin-bottom: 40px;
+  border: 1.5px solid #d3d3d3;
+  border-radius: 10px;
+}
+#call #stream-tools #stream-btns {
+  display: flex;
+}
+#call #stream-tools #stream-btns button {
+  border: none;
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+#call #stream-tools #stream-btns button#mute {
+  background-color: #13ce66;
+  margin-right: 30px;
+}
+#call #stream-tools #stream-btns button#camera {
+  background-color: #ff4949;
+}
+#call #stream-tools #stream-btns button i {
+  font-size: 34px;
+  color: #fff;
+}
+
+@keyframes move {
+  100% {
+    transform: translateY(10px);
+  }
+}
+
+/*# sourceMappingURL=style.css.map */

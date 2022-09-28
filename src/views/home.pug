@@ -5,22 +5,38 @@ html(lang="en")
     meta(http-equiv="X-UA-Compatible", content="IE=edge")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
     title Zoom
-    link(rel="stylesheet", href="https://unpkg.com/mvp.css@1.11/mvp.css")
+    script(src="https://kit.fontawesome.com/e46f3ffba2.js", crossorigin="anonymous") 
+    //- link(rel="stylesheet", href="https://unpkg.com/mvp.css@1.11/mvp.css")
+    link(rel="stylesheet", href="../public/css/style.css")
   body 
     header
-      h1 Zoom
+      h1 Face talk
     main
       div#welcome 
-        form
-          input(type="text" placeholder="room name", required)
-          button Enter room
+        span Enter room name
+        div#input-wrap
+          form
+            input(type="text", placeholder="room name", required, autofocus)
+            button(role="button")
+              i.fa-solid.fa-circle-arrow-right(aria-hidden="true")
+
       div#call
+        div#subject
+          button#prev-btn(role="button")
+            i.fa-solid.fa-circle-arrow-left(aria-hidden="true")
+          h2#subject-title
         div#myStream
-          video#myFace(autoplay, playsinline, width="400", height="400")
-          button#mute Mute
-          button#camera Turn Camera Off
-          select#cameras
-          video#peerFace(autoplay, playsinline, width="400", height="400")
+          div#video-wrap
+            video#myFace(autoplay, playsinline, width="600", height="400")
+            video#peerFace(autoplay, playsinline, width="600", height="400")
+          div#stream-tools
+            select#cameras
+            div#stream-btns
+              button#mute(role="button")
+                i.fa-solid.fa-microphone(aria-hidden="true")
+              button#camera(role="button")
+                i.fa-solid.fa-video(aria-hidden="true")
+
 
     script(src="/socket.io/socket.io.js") 
     script(src="/public/js/app.js") 

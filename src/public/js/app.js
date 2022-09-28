@@ -1,11 +1,17 @@
 const socket = io();
 
+const header = document.querySelector("header");
 const myFace = document.getElementById("myFace");
 const muteBtn = document.getElementById("mute");
 const cameraBtn = document.getElementById("camera");
 const camerasSelect = document.getElementById("cameras");
 
 const call = document.getElementById("call");
+const subject = document.getElementById("subject-title");
+const prevBtn = document.getElementById("prev-btn");
+const voiceIcon = document.getElementsByClassName("fa-microphone")[0];
+const videoIcon = document.getElementsByClassName("fa-video")[0];
+
 call.hidden = true;
 
 let myStream;
@@ -39,9 +45,6 @@ async function getScreens() {
   const screen = await navigator.mediaDevices.getUserMedia({
     video: { mediaSource: "screen" },
   });
-
-  console.log(screen);
-
   const screenId = screen.id;
   const option = document.createElement("option");
   option.value = screenId;
@@ -92,10 +95,12 @@ function handleMuteClick() {
     .forEach((track) => (track.enabled = !track.enabled));
 
   if (!muted) {
-    muteBtn.innerText = "Unmute";
+    voiceIcon.classList.remove("fa-microphone");
+    voiceIcon.classList.add("fa-microphone-slash");
     muted = true;
   } else {
-    muteBtn.innerText = "Mute";
+    voiceIcon.classList.remove("fa-microphone-slash");
+    voiceIcon.classList.add("fa-microphone");
     muted = false;
   }
 }
@@ -106,10 +111,12 @@ function handleCameraClick() {
     .forEach((track) => (track.enabled = !track.enabled));
 
   if (cameraOff) {
-    cameraBtn.innerText = "Turn Camera Off";
+    videoIcon.classList.remove("fa-video");
+    videoIcon.classList.add("fa-video-slash");
     cameraOff = false;
   } else {
-    cameraBtn.innerText = "Turn Camera On";
+    videoIcon.classList.remove("fa-video-slash");
+    videoIcon.classList.add("fa-video");
     cameraOff = true;
   }
 }
@@ -136,26 +143,35 @@ async function handleCameraChange() {
   }
 }
 
+function goHome() {
+  location.replace("/");
+}
+
 mute.addEventListener("click", handleMuteClick);
 camera.addEventListener("click", handleCameraClick);
 camerasSelect.addEventListener("input", handleCameraChange);
+prevBtn.addEventListener("click", goHome);
 
 // Welcome Form (join a room)
 const welcome = document.getElementById("welcome");
 const welcomeForm = welcome.querySelector("form");
 
-async function initCall() {
+async function initCall(roomName) {
   // 방에 입장하면 실행되는 함수
   welcome.hidden = true;
   call.hidden = false;
+  header.hidden = true;
+  subject.innerText = roomName;
+
   await getMedia();
   makeConnection();
 }
 
 async function handleWelcomeSubmit(event) {
   event.preventDefault();
+
   const input = welcomeForm.querySelector("input");
-  await initCall();
+  await initCall(input.value);
   socket.emit("join_room", input.value);
   roomName = input.value;
   input.value = "";
@@ -166,6 +182,7 @@ welcomeForm.addEventListener("submit", handleWelcomeSubmit);
 // Socket Code
 socket.on("welcome", async () => {
   // Peer A에서 실행됨 (누군가 들어왔다고 알림을 받는 브라우저)
+  // 누군가 들어오면 실행된다.
   // 이 곳에서 하는 일 : Create offer, setLocalDescription, Send offer to Peer B
 
   // 다양한 데이터를 주고 받을 수 있는 dataChannel 추가
