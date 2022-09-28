@@ -17,4 +17,4 @@ Zoom Clone using NodeJS, WebRTC and Websockets.
 
 ![Stream page](https://user-images.githubusercontent.com/88661435/192741367-9a447c3c-f121-4ebf-b3ba-31454206ddbd.png)
 
-![muted](https://user-images.githubusercontent.com/88661435/192741897-c3f4c5a7-8153-4797-81b8-5357c198469d.png)
+![muted](https://user-images.githubusercontent.com/88661435/192742113-7427210e-7e0c-42c2-9fc8-18451615522a.png)
