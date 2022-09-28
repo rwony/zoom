@@ -111,12 +111,12 @@ function handleCameraClick() {
     .forEach((track) => (track.enabled = !track.enabled));
 
   if (cameraOff) {
-    videoIcon.classList.remove("fa-video");
-    videoIcon.classList.add("fa-video-slash");
-    cameraOff = false;
-  } else {
     videoIcon.classList.remove("fa-video-slash");
     videoIcon.classList.add("fa-video");
+    cameraOff = false;
+  } else {
+    videoIcon.classList.remove("fa-video");
+    videoIcon.classList.add("fa-video-slash");
     cameraOff = true;
   }
 }
