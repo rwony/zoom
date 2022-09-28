@@ -2,6 +2,8 @@
 
 Zoom Clone using NodeJS, WebRTC and Websockets.
 
+![zoom](https://user-images.githubusercontent.com/88661435/192748517-f88cac85-6d85-41f5-9cde-f1f1b9bf4af1.gif)
+
 
 ### Features
 1. Video call
