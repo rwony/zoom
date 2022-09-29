@@ -18,7 +18,7 @@ Zoom Clone using NodeJS, WebRTC and Websockets.
 * Pug
 
 ### Design
-[Link (figma)](https://www.figma.com/file/vX9CAg3X0c8AM7vWslUaLY/Zoom?node-id=0%3A1)
+[Link (figma)](https://www.figma.com/file/1huu5yDySJ5t6rYEON2qCE/rwony---Zoom-(Face-talk)?node-id=101%3A478)
 
 ### Screenshot
 ![Main page](https://user-images.githubusercontent.com/88661435/192740383-8643b15e-6976-44aa-a5b7-544cb1272ca5.png)
