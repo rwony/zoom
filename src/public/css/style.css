@@ -3,7 +3,6 @@ html,
 body {
   margin: 0;
   padding: 0;
-  font-family: "Inter", sans-serif;
 }
 
 body {
@@ -14,14 +13,16 @@ body {
   flex-direction: column;
   height: 100vh;
   box-sizing: border-box;
-  background-color: #f6f8fa;
+  background-color: #f7f8fa;
+  font-family: "Inter", sans-serif;
+  letter-spacing: -0.005em;
 }
 body::before {
   content: "@console.ryog";
   position: absolute;
   right: 50px;
   bottom: 50px;
-  font-size: 14px;
+  font-size: 12px;
   color: #d3d3d3;
 }
 
@@ -36,6 +37,8 @@ button {
 input {
   padding: 10px;
   box-sizing: border-box;
+  width: 300px;
+  height: 50px;
   font-family: "Inter", sans-serif;
 }
 input:focus {
@@ -45,7 +48,7 @@ input:focus {
 header h1 {
   font-size: 64px;
   font-weight: 700;
-  margin: 200px 0 110px;
+  margin: 300px 0 110px;
 }
 
 #welcome {
@@ -61,14 +64,12 @@ header h1 {
   position: relative;
 }
 #welcome div#input-wrap form input {
-  width: 300px;
-  height: 50px;
   border: 1.5px solid #d3d3d3;
   border-radius: 10px;
 }
 #welcome div#input-wrap form button {
   position: absolute;
-  padding: 10px;
+  padding: 10px 12px;
   right: 0;
 }
 #welcome div#input-wrap form button i {
@@ -76,23 +77,24 @@ header h1 {
 }
 
 #call {
-  padding: 0 85px;
+  padding: 0 90px;
+}
+#call #subject {
+  display: flex;
+  margin: 50px 0 100px;
 }
 #call #subject button {
-  font-size: 50px;
-  margin: 50px 0;
-}
-#call #subject button i {
+  padding: 0;
+  margin-right: 35px;
   font-size: 50px;
 }
 #call #subject #subject-title {
-  padding: 0 10px;
-  margin-bottom: 50px;
+  margin: 0;
   font-size: 40px;
   font-weight: 700;
 }
 #call #video-wrap {
-  margin-bottom: 80px;
+  margin-bottom: 120px;
 }
 #call #stream-tools {
   display: flex;

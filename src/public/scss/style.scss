@@ -1,10 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Noto+Sans+KR&display=swap");
 
-$bgc: #f6f8fa;
+$bgc: #f7f8fa;
 $black: #24292f;
 $blue: #0969da;
 $white: #fff;
-$line-gray: #d3d3d3;
+$border-gray: #d3d3d3;
 $red: #ff4949;
 $green: #13ce66;
 
@@ -18,7 +18,6 @@ html,
 body {
   margin: 0;
   padding: 0;
-  font-family: "Inter", sans-serif;
 }
 
 body {
@@ -28,14 +27,16 @@ body {
   height: 100vh;
   box-sizing: border-box;
   background-color: $bgc;
+  font-family: "Inter", sans-serif;
+  letter-spacing: -0.005em;
 
   &::before {
     content: "@console.ryog";
     position: absolute;
     right: 50px;
     bottom: 50px;
-    font-size: 14px;
-    color: $line-gray;
+    font-size: 12px;
+    color: $border-gray;
   }
 }
 
@@ -50,6 +51,8 @@ button {
 input {
   padding: 10px;
   box-sizing: border-box;
+  width: 300px;
+  height: 50px;
   font-family: "Inter", sans-serif;
   &:focus {
     outline: none;
@@ -60,7 +63,7 @@ header {
   h1 {
     font-size: 64px;
     font-weight: 700;
-    margin: 200px 0 110px;
+    margin: 300px 0 110px;
   }
 }
 
@@ -78,15 +81,13 @@ header {
     position: relative;
 
     form input {
-      width: 300px;
-      height: 50px;
-      border: 1.5px solid $line-gray;
+      border: 1.5px solid $border-gray;
       border-radius: 10px;
     }
 
     form button {
       position: absolute;
-      padding: 10px;
+      padding: 10px 12px;
       right: 0;
 
       i {
@@ -97,28 +98,27 @@ header {
 }
 
 #call {
-  padding: 0 85px;
+  padding: 0 90px;
 
   #subject {
-    button {
-      font-size: 50px;
-      margin: 50px 0;
+    display: flex;
+    margin: 50px 0 100px;
 
-      i {
-        font-size: 50px;
-      }
+    button {
+      padding: 0;
+      margin-right: 35px;
+      font-size: 50px;
     }
 
     #subject-title {
-      padding: 0 10px;
-      margin-bottom: 50px;
+      margin: 0;
       font-size: 40px;
       font-weight: 700;
     }
   }
 
   #video-wrap {
-    margin-bottom: 80px;
+    margin-bottom: 120px;
   }
 
   #stream-tools {
